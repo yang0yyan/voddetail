@@ -1,0 +1,149 @@
+#testView {
+    width: 100%;
+    height: 100%;
+
+    .addMgtcDialog {
+        width: 640px;
+
+        .el-dialog__body {
+            padding: 16px 24px 16px 24px;
+            height: 416px;
+            box-sizing: border-box;
+            // overflow-y: auto;
+
+            display: flex;
+            flex-direction: column;
+        }
+
+        .tipView {
+            font-size: 14px;
+            font-family: Microsoft YaHei;
+            font-weight: bold;
+            color: #000000;
+            line-height: 12px;
+            padding-left: 9px;
+            margin: 16px 0px;
+
+            position: relative;
+            display: flex;
+
+            &::before {
+                content: "";
+                position: absolute;
+                top: 0;
+                left: 0;
+
+                width: 3px;
+                height: 12px;
+                background: linear-gradient(180deg, #60A1FF, #4F68FF);
+            }
+
+            .positive,
+            .negative,
+            .delete {
+                font-size: 14px;
+                font-family: Microsoft YaHei;
+                font-weight: 400;
+                color: #999999;
+                margin-left: 22px;
+                cursor: pointer;
+            }
+
+            .positive {
+                color: #2974FF;
+            }
+
+            .negative {
+                color: #999999;
+            }
+
+            .delete {
+                color: #DB3939;
+            }
+        }
+
+        .listView,
+        .listView2 {
+            display: flex;
+            flex-wrap: wrap;
+            max-height: 184px;
+            overflow-y: scroll;
+            margin-right: -16px;
+
+            .item {
+                width: calc(100% / 4 - 16px + 2px);
+                height: 32px;
+                background: #F5F7FA;
+                border-radius: 2px;
+                margin-bottom: 16px;
+                margin-right: 16px;
+
+                font-size: 14px;
+                font-family: Microsoft YaHei;
+                font-weight: 400;
+                color: #333333;
+                line-height: 32px;
+                text-align: center;
+
+                position: relative;
+
+                .txt {
+                    width: 100%;
+                    box-sizing: border-box;
+                    position: relative;
+                    white-space: nowrap;
+                    text-overflow: ellipsis;
+                    overflow: hidden;
+
+                    padding: 0px 8px;
+                }
+
+                .delete {
+                    position: absolute;
+                    top: -7px;
+                    right: -7px;
+                    width: 15px;
+                    height: 15px;
+                    background: #DB3939;
+                    border-radius: 50%;
+                    z-index: 99999;
+
+                    color: #FFFFFF;
+                    line-height: 15px;
+                    font-size: 18px;
+
+                    cursor: pointer;
+                }
+            }
+
+            .item:nth-child(4n) {
+                margin-right: 0px;
+            }
+
+            .itemChoose {
+                background: linear-gradient(90deg, #60A1FF, #4F68FF);
+                color: #FFFFFF;
+            }
+        }
+
+        .listView2 {
+            flex-grow: 1;
+            height: 0;
+            padding-top: 16px;
+            margin-top: -16px;
+            transition-duration: 0.3s;
+        }
+
+        .filterView {
+            height: 32px;
+            display: flex;
+
+            .btn {
+                width: 32px;
+                height: 32px;
+                background: linear-gradient(90deg, #60A1FF, #4F68FF);
+                border-radius: 2px;
+            }
+        }
+    }
+}

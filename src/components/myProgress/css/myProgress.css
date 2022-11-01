@@ -1,0 +1,9 @@
+#myProgress {
+  width: 200px;
+  min-height: 80px;
+  background-color: bisque;
+  position: absolute;
+  z-index: 999999;
+  top: 30px;
+  right: 30px;
+}
