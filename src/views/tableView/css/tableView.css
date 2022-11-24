@@ -1,0 +1,83 @@
+#tableView {
+  width: 100%;
+  height: 100%;
+  padding-top: 20px;
+  background-color: #FFFFFF;
+}
+#tableView .myTable {
+  display: flex;
+  flex-direction: column;
+  margin: 0px 20px 20px 20px;
+}
+#tableView .myTable .otherItem {
+  background: #f5f5f5;
+}
+#tableView .myTable .myTableTitle {
+  border: 1px solid rgba(0, 0, 0, 0.06);
+  border-width: 0 0 1px 0;
+  font-size: 14px;
+  font-family: Microsoft YaHei;
+  font-weight: bold;
+  color: #333333;
+  line-height: 40px;
+}
+#tableView .myTable .myTableContent .myTableContentItem {
+  border: 1px solid rgba(0, 0, 0, 0);
+  border-width: 1px 1 1px 1;
+  font-size: 14px;
+  font-family: Microsoft YaHei;
+  font-weight: 400;
+  color: #333333;
+  line-height: 40px;
+}
+#tableView .myTable .myTableContent .myTableContentItem ul {
+  width: 100%;
+}
+#tableView .myTable .myTableContent .myTableContentItem .clickText {
+  width: 100%;
+  cursor: pointer;
+  font-size: 14px;
+  font-family: PingFangSC-Regular;
+  font-weight: 400;
+  color: #1989fa;
+  text-decoration: underline;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+#tableView .myTable .myTableContent .myTableContentItem .star img {
+  margin-left: 35%;
+}
+#tableView .myTable .myTableContent .myTableContentItem .option img {
+  cursor: pointer;
+}
+#tableView .myTable .myTableContent .myTableContentItem:hover {
+  border: 1px solid #275cff;
+}
+#tableView .myTable .myTableTitle,
+#tableView .myTable .myTableContentItem {
+  display: flex;
+  height: 32px;
+}
+#tableView .myTable .myTableTitle .cell,
+#tableView .myTable .myTableContentItem .cell {
+  width: 0;
+  display: flex;
+  align-items: center;
+}
+#tableView .myTable .myTableTitle .cell .sort,
+#tableView .myTable .myTableContentItem .cell .sort {
+  margin-left: 5px;
+  height: 14px;
+  cursor: pointer;
+}
+#tableView .myTable .myTableTitle .cell p,
+#tableView .myTable .myTableContentItem .cell p {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+#tableView .myTable .myTableTitle .div2,
+#tableView .myTable .myTableContentItem .div2 {
+  justify-content: center;
+}

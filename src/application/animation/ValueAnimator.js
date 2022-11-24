@@ -1,6 +1,6 @@
 import { LinearInterpolator } from "@/application/view/animation/LinearInterpolator";
 import { IntEvaluator } from "./IntEvaluator";
-import { PropertyValuesHolder } from "./PropertyValuesHolder";
+// import { PropertyValuesHolder } from "./PropertyValuesHolder";
 
 export class ValueAnimator {
   mDuration = 0;
@@ -24,13 +24,13 @@ export class ValueAnimator {
 
   setIntValues(values) {
     if (!values || !(values instanceof Array) || values.length == 0) return;
-    // this.mValues = values;
-    if (this.mValues == null || this.mValues.length == 0) {
-      this.setValues(PropertyValuesHolder.ofInt("", values)); // IntPropertyValuesHolder
-    } else {
-      let valuesHolder = this.mValues[0]; // PropertyValuesHolder
-      valuesHolder.setIntValues(values);
-    }
+    this.mValues = values;
+    // if (this.mValues == null || this.mValues.length == 0) {
+    //   this.setValues(PropertyValuesHolder.ofInt("", values)); // IntPropertyValuesHolder
+    // } else {
+    //   let valuesHolder = this.mValues[0]; // PropertyValuesHolder
+    //   valuesHolder.setIntValues(values);
+    // }
   }
   /**
    * @param {PropertyValuesHolder...} values
@@ -56,13 +56,13 @@ export class ValueAnimator {
   }
 
   setEvaluator(value) {
-    // if (value) {
-    //   this.mEvaluator = value;
-    // }
-
-    if (value != null && this.mValues != null && this.mValues.length > 0) {
-      this.mValues[0].setEvaluator(value);
+    if (value) {
+      this.mEvaluator = value;
     }
+
+    // if (value != null && this.mValues != null && this.mValues.length > 0) {
+    //   this.mValues[0].setEvaluator(value);
+    // }
   }
 
   setInterpolator(value) {
@@ -75,29 +75,44 @@ export class ValueAnimator {
 
   start() {
     this.timestamp = new Date().getTime();
-    // this.timeFunc();
+    this.timeFunc2();
   }
 
-  timeFunc() {
-    let timeDelay = 33;
+  // timeFunc() {
+  //   let timeDelay = 33;
 
+  //   let currentTimeMillis1 = new Date().getTime();
+  //   // console.log(currentTimeMillis1);
+  //   let delay = currentTimeMillis1 - this.timestamp;
+  //   this.animateBasedOnPlayTime(delay);
+  //   let currentTimeMillis2 = new Date().getTime();
+  //   timeDelay =
+  //     this.framesDelay - (currentTimeMillis2 - currentTimeMillis1) - 9;
+  //   if (timeDelay < 0) timeDelay = 0;
+  //   // console.log(timeDelay);
+  //   if (delay < this.mDuration) {
+  //     setTimeout(() => {
+  //       this.timeFunc();
+  //     }, timeDelay);
+  //     // requestAnimationFrame(this.timeFunc); //请求再次执行渲染函数render
+  //   }
+  // }
+
+  timeFunc2() {
     let currentTimeMillis1 = new Date().getTime();
     // console.log(currentTimeMillis1);
     let delay = currentTimeMillis1 - this.timestamp;
     this.animateBasedOnPlayTime(delay);
-    let currentTimeMillis2 = new Date().getTime();
-    timeDelay =
-      this.framesDelay - (currentTimeMillis2 - currentTimeMillis1) - 9;
-    if (timeDelay < 0) timeDelay = 0;
-    // console.log(timeDelay);
-    if (delay < this.mDuration)
-      setTimeout(() => {
-        this.timeFunc();
-      }, timeDelay);
+    if (delay < this.mDuration) {
+      this.time_id = requestAnimationFrame(this.timeFunc2.bind(this)); //请求再次执行渲染函数render
+    } else {
+      cancelAnimationFrame(this.time_id);
+    }
   }
 
   animateBasedOnPlayTime(currentPlayTime) {
     let fraction = currentPlayTime / this.mDuration;
+    if (fraction > 1) fraction = 1;
     // fraction = getCurrentIterationFraction(fraction, inReverse);
     this.animateValue(fraction);
   }

@@ -3,9 +3,9 @@ export default {
   data() {
     return {};
   },
-  mounted () {},
-  created () {},
+  mounted() {},
+  created() {},
   methods: {
-    setData () {},
+    setData() {},
   },
 };

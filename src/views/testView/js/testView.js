@@ -1,106 +1,83 @@
-import { Type } from "./Type";
-
 export default {
   name: "testView",
   data() {
     return {
-      // dialog
-      dialogVisible: false,
-      status: 0,
-      list1: [],
-      list2: [],
-      filterList1: [],
-      filterList2: [],
-      list2Copy: [],
-
-      filterInput: "",
-      typeInput: "",
+      jsonData: [
+        {
+          name: "路人甲",
+          phone: "123456",
+          email: "123@123456.com",
+        },
+        {
+          name: "炮灰乙",
+          phone: "123456",
+          email: "123@123456.com",
+        },
+        {
+          name: "土匪丙",
+          phone: "123456",
+          email: "123@123456.com",
+        },
+        {
+          name: "流氓丁",
+          phone: "123456",
+          email: "123@123456.com",
+        },
+      ],
     };
   },
-  // computed: {
-  //   filterList1: function () {
-  //     // `this` 指向 vm 实例
-  //     return this.list1.filter((item) =>
-  //       this.input ? item.indexOf(this.input) > -1 : true
-  //     );
-  //   },
-  //   filterList2: function () {
-  //     // `this` 指向 vm 实例
-  //     return this.list2.filter((item) =>
-  //       this.input ? item === this.input : true
-  //     );
-  //   },
-  // },
-  mounted() {
-    this.nameFilter("");
-  },
-  created() {
-    let t = new Type();
-    this.list1 = t.getMediaNameForType("纸媒");
-  },
+  mounted() {},
+  created() {},
   methods: {
-    reset() {
-      this.filterInput = "";
-      this.negativeBtn();
-    },
-    deleteBtn() {
-      this.status = -1;
-      // 保存状态，用于还原
-      this.list2Copy = JSON.parse(JSON.stringify(this.list2));
-    },
-    addBtn() {
-      this.status = 1;
-      // 保存状态，用于还原
-      this.list2Copy = JSON.parse(JSON.stringify(this.list2));
-    },
-    positiveBtn() {
-      this.status = 0;
-      // 备份状态
-      this.list2Copy = this.list2;
-    },
-    negativeBtn() {
-      this.status = 0;
-      // 还原状态
-      this.list2 = this.list2Copy;
-      this.nameFilter(this.filterInput);
-    },
-    deleteOption(index) {
-      let name = this.filterList2[index];
-      this.filterList2.splice(index, 1);
-      let index2 = this.list2.indexOf(name);
-      if (index2 > -1) {
-        this.list2.splice(index2, 1);
+    tableToExcel() {
+      // 列标题
+      let str = "<tr><td>姓名</td><td>电话</td><td>邮箱</td></tr>";
+      // 循环遍历，每行加入tr标签，每个单元格加td标签
+      for (let i = 0; i < this.jsonData.length; i++) {
+        str += "<tr>";
+        for (const key in this.jsonData[i]) {
+          // 增加\t为了不让表格显示科学计数法或者其他格式
+          str += `<td>${this.jsonData[i][key] + "\t"}</td>`;
+        }
+        str += "</tr>";
       }
+      console.log(str);
+      // Worksheet名
+      const worksheet = "Sheet1";
+      const uri = "data:application/vnd.ms-excel;base64,";
+
+      // 下载的表格模板数据
+      const template = `
+        <html 
+          xmlns:o="urn:schemas-microsoft-com:office:office" 
+          xmlns:x="urn:schemas-microsoft-com:office:excel" 
+          xmlns="http://www.w3.org/TR/REC-html40">
+          <head>
+            <meta charset='UTF-8'>
+            <!--[if gte mso 9]>
+            <xml>
+              <x:ExcelWorkbook>
+                <x:ExcelWorksheets>
+                  <x:ExcelWorksheet>
+                    <x:Name>${worksheet}</x:Name>
+                    <x:WorksheetOptions>
+                      <x:DisplayGridlines/>
+                    </x:WorksheetOptions>
+                  </x:ExcelWorksheet>
+                </x:ExcelWorksheets>
+              </x:ExcelWorkbook>
+            </xml>
+            <![endif]-->
+          </head>
+          <body>
+            <table>${str}</table>
+          </body>
+        </html>`;
+      // 下载模板
+      window.location.href = uri + this.base64(template);
     },
-    handleClose(done) {
-      if (done instanceof Function) {
-        done();
-      } else {
-        this.dialogVisible = !this.dialogVisible;
-      }
-      this.reset();
-    },
-    nameFilter(val) {
-      this.filterList1 = this.list1.filter((item) =>
-        val ? item.indexOf(val) > -1 : true
-      );
-      this.filterList2 = this.list2.filter((item) =>
-        val ? item.indexOf(val) > -1 : true
-      );
-    },
-    onBlur() {
-      if (!this.typeInput) return;
-      let existence = false;
-      existence = this.list1.indexOf(this.typeInput) > -1;
-      if (!existence) existence = this.list2.indexOf(this.typeInput) > -1;
-      if (!existence) {
-        this.list2.push(this.typeInput);
-        this.filterList2.push(this.typeInput);
-        this.typeInput = "";
-      }
-      setTimeout(() => {
-        this.$refs.scrollView.scrollTop = 999999999999;
-      }, 100);
+    base64(s) {
+      return window.btoa(unescape(encodeURIComponent(s)));
     },
   },
 };

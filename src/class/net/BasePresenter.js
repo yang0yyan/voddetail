@@ -2,6 +2,7 @@ import { CompositeDisposable } from "./CompositeDisposable";
 import { OkHttpHolder } from "./OkHttpHolder";
 
 export class BasePresenter {
+  apiServer = OkHttpHolder.getInstance().getApi();
   constructor(baseView) {
     this.baseView = baseView;
     this.requestList = [];

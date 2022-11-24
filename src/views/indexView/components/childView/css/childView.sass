@@ -1,0 +1,40 @@
+@function randomNum($max, $min: 0, $u: 1)
+    @return ($min + random($max)) * $u
+
+@function shadowSet($n, $size)
+    $shadow: 0 0 0 0 #fff
+
+    @for $i from 0 through $n
+        $x: randomNum(350)
+        $y: randomNum(500)
+        $scale: randomNum($size) / 10
+        $shadow: $shadow, #{$x}px #{$y}px 0 #{$scale}px rgba(255, 255, 255, .8)
+
+    @return $shadow
+
+#childView
+    width: 350px
+    height: 500px
+
+    .g-wrap
+        position: relative
+        width: 350px
+        height: 500px
+        background: #0b1a3a
+        overflow: hidden
+
+        &::before
+            content: ""
+            position: absolute
+            width: 1px
+            height: 1px
+            border-radius: 50%
+            box-shadow: shadowSet(100, 6)
+
+        .g-aurora
+            width: 400px
+            height: 300px
+            background: radial-gradient(circle at 100% 100%,transparent 45%,#bd63c1 55%,#53e5a6 65%,transparent 85%)
+            transform: rotate(45deg) scaleX(1.4)
+            mix-blend-mode: color-dodge
+            filter: url(#wave)

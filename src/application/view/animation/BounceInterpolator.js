@@ -1,5 +1,9 @@
-export class BounceInterpolator {
-  constructor() {}
+import { BaseInterpolator } from "./BaseInterpolator";
+
+export class BounceInterpolator extends BaseInterpolator {
+  constructor() {
+    super();
+  }
 
   bounce(t) {
     return t * t * 8.0;

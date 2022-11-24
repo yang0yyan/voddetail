@@ -18,6 +18,16 @@ const routes = [
     name: "testView",
     component: () => import("../views/testView/testView.vue"),
   },
+  {
+    path: "/tableView",
+    name: "tableView",
+    component: () => import("../views/tableView/tableView.vue"),
+  },
+  {
+    path: "/gameView",
+    name: "gameView",
+    component: () => import("../views/gameView/gameView.vue"),
+  },
 ];
 
 const router = new VueRouter({

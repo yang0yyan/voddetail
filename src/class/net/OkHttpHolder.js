@@ -1,35 +1,46 @@
+import { Api } from "./Api";
+
 export class OkHttpHolder {
+  static #instance = null;
+  #service = null;
+  #api = null;
+
   constructor() {
     this.#initOkHttp();
   }
 
   static getInstance() {
-    if (this.instance === undefined) {
-      this.instance = new OkHttpHolder();
+    if (this.#instance === null) {
+      this.#instance = new OkHttpHolder();
     }
-    return this.instance;
+    return this.#instance;
   }
 
   #initOkHttp() {
     let axios = require("axios");
 
-    this.service = axios.create({
+    this.#service = axios.create({
       timeout: 2000,
     });
     // 全局设置重试时长和重试间隔
-    this.service.defaults.retry = 1;
-    this.service.defaults.retryDelay = 1000;
+    this.#service.defaults.retry = 1;
+    this.#service.defaults.retryDelay = 1000;
     this.#setInterceptors();
+    this.#api = new Api();
   }
 
   getService() {
-    return this.service;
+    return this.#service;
+  }
+
+  getApi() {
+    return this.#api;
   }
 
   #setInterceptors() {
     let thiz_ = this;
     // 添加请求拦截器
-    this.service.interceptors.request.use(
+    this.#service.interceptors.request.use(
       function (config) {
         // 在发送请求之前做些什么
         config.headers["Business-Name"] = "CCTEG";
@@ -44,7 +55,7 @@ export class OkHttpHolder {
     );
 
     // 添加响应拦截器
-    this.service.interceptors.response.use(
+    this.#service.interceptors.response.use(
       function (response) {
         // 2xx 范围内的状态码都会触发该函数。
         // 对响应数据做点什么

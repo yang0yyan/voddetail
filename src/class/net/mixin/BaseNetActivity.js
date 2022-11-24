@@ -1,4 +1,4 @@
-import { Loading } from "element-ui";
+import { LoadingManager } from "@/class/utils/LoadingManager";
 
 export default {
   name: "test",
@@ -26,6 +26,9 @@ export default {
       this.hideProgress,
       this.onProgress
     ); // 设置响应回调
+
+    this.loading = new LoadingManager();
+    this.loading.setSelfDialog(this.$options.name);
   },
   beforeDestroy() {
     if (this.mPresenter != null) {
@@ -33,33 +36,18 @@ export default {
     }
   },
   methods: {
-    startLoading() {
-      let option = {
-        text: "加载中……",
-        background: "rgba(0, 0, 0, 0.7)",
-      };
-      if (this.showSelfDialog) {
-        option.target = "#" + this.$options.name;
-      }
-      this.loading = Loading.service(option);
-    },
-    endLoading() {
-      this.loading.close();
-    },
-
     showLoading() {
-      if (this.loadingCount === 0) {
-        this.startLoading();
+      if (this.showSelfDialog) {
+        this.loading.showLoading();
+      } else {
+        LoadingManager.getInstance().showLoading();
       }
-      this.loadingCount += 1;
     },
     hideLoading() {
-      if (this.loadingCount <= 0) {
-        return;
-      }
-      this.loadingCount -= 1;
-      if (this.loadingCount === 0) {
-        this.endLoading();
+      if (this.showSelfDialog) {
+        this.loading.hideLoading();
+      } else {
+        LoadingManager.getInstance().hideLoading();
       }
     },
     showError(msg) {
@@ -73,10 +61,10 @@ export default {
     },
     onErrorCode() {},
     showProgress() {
-      this.$mytoast.showEditSuccess();
+      // this.$mytoast.showEditSuccess();
     },
     hideProgress() {
-      this.$mytoast.hide();
+      // this.$mytoast.hide();
     },
     onProgress() {},
 

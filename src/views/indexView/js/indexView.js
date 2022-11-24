@@ -1,10 +1,11 @@
 import { IntEvaluator } from "@/application/animation/IntEvaluator";
 import { ValueAnimator } from "@/application/animation/ValueAnimator";
-import { BounceInterpolator } from "@/application/view/animation/BounceInterpolator";
-import mixin from "@/assets/js/net/mixin/BaseNetActivity";
+// import { BounceInterpolator } from "@/application/view/animation/BounceInterpolator";
+import { CycleInterpolator } from "@/application/view/animation/CycleInterpolator";
+import mixin from "@/class/net/mixin/BaseNetActivity";
 
-import { TaskDetailPresenter } from "@/assets/js/net/presenter/TaskDetailPresenter";
-import { TaskDetailView } from "@/assets/js/net/view/TaskDetailView";
+import { TaskDetailPresenter } from "@/class/net/presenter/TaskDetailPresenter";
+import { TaskDetailView } from "@/class/net/view/TaskDetailView";
 
 import ChildView from "../components/childView/childView.vue";
 
@@ -36,14 +37,14 @@ export default {
     //   3,
     //   4
     // );
-    let anim = ValueAnimator.ofInt([0, 800]);
-    anim.setInterpolator(new BounceInterpolator());
+    let anim = ValueAnimator.ofInt([0, 400]);
+    anim.setInterpolator(new CycleInterpolator(2));
     anim.setEvaluator(new IntEvaluator());
-    anim.setDuration(1000);
+    anim.setDuration(2000);
     anim.start();
     anim.addUpdateListener((value) => {
       console.log(value);
-      this.len = value;
+      this.len = value + 800;
     });
   },
   methods: {
