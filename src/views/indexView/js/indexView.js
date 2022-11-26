@@ -1,5 +1,9 @@
-import { IntEvaluator } from "@/application/animation/IntEvaluator";
+import { ArgbEvaluator } from "@/application/animation/ArgbEvaluator";
+// import { IntEvaluator } from "@/application/animation/IntEvaluator";
 import { ValueAnimator } from "@/application/animation/ValueAnimator";
+// import { AccelerateDecelerateInterpolator } from "@/application/view/animation/AccelerateDecelerateInterpolator";
+// import { AnticipateInterpolator } from "@/application/view/animation/AnticipateInterpolator";
+// import { AnticipateOvershootInterpolator } from "@/application/view/animation/AnticipateOvershootInterpolator";
 // import { BounceInterpolator } from "@/application/view/animation/BounceInterpolator";
 import { CycleInterpolator } from "@/application/view/animation/CycleInterpolator";
 import mixin from "@/class/net/mixin/BaseNetActivity";
@@ -16,6 +20,7 @@ export default {
     return {
       tag: "indexView",
       len: 0,
+      color: "#000000",
     };
   },
   mixins: [mixin],
@@ -37,14 +42,14 @@ export default {
     //   3,
     //   4
     // );
-    let anim = ValueAnimator.ofInt([0, 400]);
-    anim.setInterpolator(new CycleInterpolator(2));
-    anim.setEvaluator(new IntEvaluator());
-    anim.setDuration(2000);
-    anim.start();
-    anim.addUpdateListener((value) => {
+    // this.anim = ValueAnimator.ofInt([0xffff00ff, 0x0000ffff]);
+    this.anim = ValueAnimator.ofInt([0, 800]);
+    this.anim.setInterpolator(new CycleInterpolator(3));
+    this.anim.setEvaluator(new ArgbEvaluator());
+    this.anim.setDuration(3000);
+    this.anim.addUpdateListener((value) => {
       console.log(value);
-      this.len = value + 800;
+      this.len = value;
     });
   },
   methods: {
@@ -52,6 +57,9 @@ export default {
       if (this.mPresenter != null) {
         this.mPresenter.detachView();
       }
+    },
+    start() {
+      this.anim.start();
     },
     createPresenter() {
       this.view = new TaskDetailView();

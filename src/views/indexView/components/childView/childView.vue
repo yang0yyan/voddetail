@@ -3,7 +3,7 @@
     <div class="g-wrap">
       <div class="g-aurora"></div>
     </div>
-    <svg>
+    <!-- <svg>
       <filter id="wave">
         <feTurbulence
           baseFrequency="0.003 0.003"
@@ -19,11 +19,12 @@
           scale="96"
         ></feDisplacementMap>
       </filter>
-    </svg>
+    </svg> -->
   </div>
 </template>
 
 <script src="./js/childView.js"></script>
 <style lang="less" scoped>
-@import "./css/childView.min.css";
+@import "./css/childView.css";
+// @import "./css/childView.min.css";
 </style>

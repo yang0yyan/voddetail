@@ -1,7 +1,16 @@
 <template>
   <div id="indexView">
     <div class="cancel" @click="calcel()">取消请求</div>
-    <ChildView :style="'margin-left:' + len + 'px;'"></ChildView>
+    <div class="cancel" @click="start()">开始</div>
+    <ChildView
+      :style="
+        'margin-top:' +
+        len +
+        'px;margin-left:200px;background-color: ' +
+        color +
+        ';'
+      "
+    ></ChildView>
   </div>
 </template>
 

@@ -36,13 +36,13 @@ export class ValueAnimator {
    * @param {PropertyValuesHolder...} values
    */
   setValues(values) {
-    let numValues = values.length;
+    // let numValues = values.length;
     this.mValues = values;
-    this.mValuesMap = {}; // String, PropertyValuesHolder
-    for (let i = 0; i < numValues; ++i) {
-      let valuesHolder = values[i]; // PropertyValuesHolder
-      this.mValuesMap.put(valuesHolder.getPropertyName(), valuesHolder);
-    }
+    // this.mValuesMap = {}; // String, PropertyValuesHolder
+    // for (let i = 0; i < numValues; ++i) {
+    //   let valuesHolder = values[i]; // PropertyValuesHolder
+    //   this.mValuesMap.put(valuesHolder.getPropertyName(), valuesHolder);
+    // }
     // New property/values/target should cause re-initialization prior to starting
     // mInitialized = false;
   }

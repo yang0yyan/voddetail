@@ -1,5 +1,8 @@
 import { BaseInterpolator } from "./BaseInterpolator";
 
+/**
+ * 更改在终点反弹的插值器。
+ */
 export class BounceInterpolator extends BaseInterpolator {
   constructor() {
     super();

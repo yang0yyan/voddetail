@@ -34,7 +34,7 @@ export default {
     // setTimeout(() => {
     //   Toast.makeText("你好", Toast.LENGTH_SHORT).show();
     // }, 1000);
-    this.filter = document.querySelector("#turbulence");
+    // this.filter = document.querySelector("#turbulence");
     // window.requestAnimationFrame(this.freqAnimation);
   },
   methods: {
