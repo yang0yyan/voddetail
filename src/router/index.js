@@ -6,12 +6,17 @@ Vue.use(VueRouter);
 const routes = [
   {
     path: "/",
-    redirect: "indexView",
+    redirect: "animView",
   },
   {
     path: "/indexView",
     name: "indexView",
     component: () => import("../views/indexView/indexView.vue"),
+  },
+  {
+    path: "/animView",
+    name: "animView",
+    component: () => import("../views/animView/animView.vue"),
   },
   {
     path: "/testView",

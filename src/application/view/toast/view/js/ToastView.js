@@ -32,13 +32,13 @@ export default {
   },
   created() {
     // this.$nextTick(() => {
-    //   const body = document.querySelector('body')
+    //   const body = document.querySelector("body");
     //   if (body.append) {
-    //     body.append(this.$el)
+    //     body.append(this.$el);
     //   } else {
-    //     body.appendChild(this.$el)
+    //     body.appendChild(this.$el);
     //   }
-    // })
+    // });
   },
   methods: {
     // 定时器执行的方法

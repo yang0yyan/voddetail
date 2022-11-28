@@ -1,6 +1,46 @@
+@keyframes ball {
+    0% {
+        top: 0px;
+        left: 0px;
+    }
+
+    25% {
+        top: 0px;
+        left: 350px;
+    }
+
+    50% {
+        top: 200px;
+        left: 350px;
+    }
+
+    75% {
+        top: 200px;
+        left: 0px;
+    }
+
+    100% {
+        top: 0px;
+        left: 0px;
+    }
+}
+
 #indexView {
     width: 80%;
     height: 80%;
 
     // background-color: aquamarine;
+    .anim {
+        height: 200px;
+        width: 200px;
+        background-color: aqua;
+        position: relative;
+        // animation-name: ball;
+        // animation-duration: 2s;
+        // transition-duration: 1s;
+
+        // &:hover {
+        //     transform: translate(100px);
+        // }
+    }
 }
