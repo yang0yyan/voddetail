@@ -19,6 +19,11 @@ const routes = [
     component: () => import("../views/netView/netView.vue"),
   },
   {
+    path: "/animView",
+    name: "animView",
+    component: () => import("../views/animView/animView.vue"),
+  },
+  {
     path: "/testView",
     name: "testView",
     component: () => import("../views/testView/testView.vue"),

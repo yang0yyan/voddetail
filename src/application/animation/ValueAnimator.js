@@ -12,7 +12,7 @@ export class ValueAnimator {
   mValues = []; // PropertyValuesHolder[] ---> IntPropertyValuesHolder
   mValuesMap; // HashMap<String, PropertyValuesHolder>
 
-  framesDelay = Math.round(1000 / 60);
+  // framesDelay = Math.round(1000 / 60);
 
   constructor() {}
 
@@ -100,7 +100,6 @@ export class ValueAnimator {
 
   timeFunc2() {
     let currentTimeMillis1 = new Date().getTime();
-    // console.log(currentTimeMillis1);
     let delay = currentTimeMillis1 - this.timestamp;
     this.animateBasedOnPlayTime(delay);
     if (delay < this.mDuration) {

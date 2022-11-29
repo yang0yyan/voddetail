@@ -32,27 +32,27 @@ export class ArgbEvaluator extends TypeEvaluator {
 
   evaluate(fraction, startValue, endValue) {
     let startInt = startValue;
-    let startA = (startInt >> 24) & 0xff;
-    let startR = (startInt >> 16) & 0xff;
-    let startG = (startInt >> 8) & 0xff;
-    let startB = startInt & 0xff;
+    let startR = (startInt >> 24) & 0xff;
+    let startG = (startInt >> 16) & 0xff;
+    let startB = (startInt >> 8) & 0xff;
+    let startA = startInt & 0xff;
 
     let endInt = endValue;
-    let endA = (endInt >> 24) & 0xff;
-    let endR = (endInt >> 16) & 0xff;
-    let endG = (endInt >> 8) & 0xff;
-    let endB = endInt & 0xff;
+    let endR = (endInt >> 24) & 0xff;
+    let endG = (endInt >> 16) & 0xff;
+    let endB = (endInt >> 8) & 0xff;
+    let endA = endInt & 0xff;
+
+    let r = parseInt(startR + parseInt(fraction * (endR - startR)));
+    let g = parseInt(startG + parseInt(fraction * (endG - startG)));
+    let b = parseInt(startB + parseInt(fraction * (endB - startB)));
+    let a = parseInt(startA + parseInt(fraction * (endA - startA)));
     return (
-      this.hexToString(
-        parseInt(startA + parseInt(fraction * (endA - startA)))
-      ) +
-      this.hexToString(
-        parseInt(startR + parseInt(fraction * (endR - startR)))
-      ) +
-      this.hexToString(
-        parseInt(startG + parseInt(fraction * (endG - startG)))
-      ) +
-      this.hexToString(parseInt(startB + parseInt(fraction * (endB - startB))))
+      "#" +
+      (this.hexToString(r) +
+        this.hexToString(g) +
+        this.hexToString(b) +
+        this.hexToString(a))
     );
   }
 }

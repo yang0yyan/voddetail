@@ -8,7 +8,8 @@ export class ToastWidget {
   #init() {
     const MsgConstructor = Vue.extend(myToast);
     const instance = new MsgConstructor();
-    document.body.appendChild(instance.$el);
+    console.log(instance);
+    // document.body.appendChild(instance.$el);
     this.instance = instance;
   }
 

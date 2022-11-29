@@ -1,11 +1,6 @@
-import { ArgbEvaluator } from "@/application/animation/ArgbEvaluator";
-// import { IntEvaluator } from "@/application/animation/IntEvaluator";
+import { IntEvaluator } from "@/application/animation/IntEvaluator";
 import { ValueAnimator } from "@/application/animation/ValueAnimator";
-// import { AccelerateDecelerateInterpolator } from "@/application/view/animation/AccelerateDecelerateInterpolator";
-// import { AnticipateInterpolator } from "@/application/view/animation/AnticipateInterpolator";
-// import { AnticipateOvershootInterpolator } from "@/application/view/animation/AnticipateOvershootInterpolator";
-// import { BounceInterpolator } from "@/application/view/animation/BounceInterpolator";
-import { CycleInterpolator } from "@/application/view/animation/CycleInterpolator";
+import { BounceInterpolator } from "@/application/view/animation/BounceInterpolator";
 import mixin from "@/class/net/mixin/BaseNetActivity";
 
 import { TaskDetailPresenter } from "@/class/net/presenter/TaskDetailPresenter";
@@ -20,7 +15,8 @@ export default {
     return {
       tag: "indexView",
       len: 0,
-      color: "#000000",
+      color: "#aa0000",
+      txt: "Z",
     };
   },
   mixins: [mixin],
@@ -42,14 +38,15 @@ export default {
     //   3,
     //   4
     // );
-    // this.anim = ValueAnimator.ofInt([0xffff00ff, 0x0000ffff]);
     this.anim = ValueAnimator.ofInt([0, 800]);
-    this.anim.setInterpolator(new CycleInterpolator(3));
-    this.anim.setEvaluator(new ArgbEvaluator());
-    this.anim.setDuration(3000);
+    this.anim.setInterpolator(new BounceInterpolator());
+    this.anim.setEvaluator(new IntEvaluator());
+    this.anim.setDuration(2000);
     this.anim.addUpdateListener((value) => {
       console.log(value);
+      // this.txt = value;
       this.len = value;
+      // this.color = value;
     });
   },
   methods: {
@@ -59,6 +56,7 @@ export default {
       }
     },
     start() {
+      // Toast.makeText("你好", Toast.LENGTH_SHORT).show();
       this.anim.start();
     },
     createPresenter() {
