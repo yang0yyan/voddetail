@@ -10,7 +10,7 @@ export class ValueAnimator {
   mEvaluator = new IntEvaluator();
 
   mValues = []; // PropertyValuesHolder[] ---> IntPropertyValuesHolder
-  mValuesMap; // HashMap<String, PropertyValuesHolder>
+  // mValuesMap; // HashMap<String, PropertyValuesHolder>
 
   // framesDelay = Math.round(1000 / 60);
 

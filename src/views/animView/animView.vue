@@ -4,7 +4,7 @@
       <div class="square" :class="className" @click="className = 'anim'"></div>
       <div class="square2" :style="square2Style" @click="square2Click()"></div>
     </div>
-    <div class="list" ref="list" @click="listClick()" @scroll="windowScroll">
+    <div class="list" ref="list" @click="listClick()">
       <div class="item" v-for="(item, i) in 30" :key="i">{{ item }}</div>
     </div>
   </div>

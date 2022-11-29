@@ -11,7 +11,7 @@ export default {
   },
   created() {
     this.view.ordinaryView(this.submitTaskSuccess, this.submitTaskError);
-    // this.setDialogOption(true, true);
+    this.setDialogOption(true, true);
   },
   mounted() {},
   methods: {
