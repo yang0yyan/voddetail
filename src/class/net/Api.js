@@ -9,8 +9,8 @@ export class Api {
    * @returns Object
    */
   addCategory(data) {
-    let config = this.#post(data);
-    config.url = "/api/v1/mgxType_dic/category";
+    let config = this.#get(data);
+    config.url = "/api/v1/todo/newreport/query";
     return config;
   }
 

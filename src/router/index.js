@@ -6,12 +6,17 @@ Vue.use(VueRouter);
 const routes = [
   {
     path: "/",
-    redirect: "indexView",
+    redirect: "netView",
   },
   {
     path: "/indexView",
     name: "indexView",
     component: () => import("../views/indexView/indexView.vue"),
+  },
+  {
+    path: "/netView",
+    name: "netView",
+    component: () => import("../views/netView/netView.vue"),
   },
   {
     path: "/testView",

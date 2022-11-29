@@ -13,10 +13,30 @@ export class TaskDetailPresenter extends BasePresenter {
       new BaseObserver(
         this.baseView,
         function success(data) {
-          this.baseView.submitTaskSuccess(data);
+          if (data || data === 0) {
+            this.baseView.submitTaskSuccess(data);
+          } else {
+            this.baseView.submitTaskError();
+          }
+          // if (data.size() == 1 && password.equals(data.get(0).getPassword())) {
+          //   this.baseView.submitTaskSuccess("123");
+          // } else {
+          //   this.baseView.submitTaskError("用户名或密码错误");
+          // }
+          // this.baseView.submitTaskSuccess(data);
         },
         function error(msg) {
-          this.baseView.submitTaskError(msg);
+          if (msg.message) {
+            this.baseView.submitTaskError(msg.message);
+          }
+          // if (
+          //   msg.contains("user_info.userName") &&
+          //   msg.contains("SQLITE_CONSTRAINT_PRIMARYKEY")
+          // ) {
+          //   this.baseView.submitTaskError("用户名已存在");
+          // } else {
+          //   this.baseView.submitTaskError(msg);
+          // }
         }
       )
     );

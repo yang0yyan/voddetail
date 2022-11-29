@@ -19,6 +19,7 @@ export class BasePresenter {
   }
 
   addDisposable(data, callback) {
+    if (!this.baseView) return;
     if (this.compositeDisposable === undefined) {
       this.compositeDisposable = new CompositeDisposable();
       this.controller = new AbortController();

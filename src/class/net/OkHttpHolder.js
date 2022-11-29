@@ -45,7 +45,7 @@ export class OkHttpHolder {
         // 在发送请求之前做些什么
         config.headers["Business-Name"] = "CCTEG";
         config.headers["Authorization"] =
-          "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJjcmVhdGVUaW1lIjoxNjYzMjAzMzk1LCJyb2xlcyI6IumHh-e8luWqkui1hOa1i-ivleinkuiJsizkuK3lm73nhaTnp5HmgLvpg6jnrqHnkIblkZgiLCJ1c2VySWQiOiI4NjAwMDBfMDAxMzE2XzAwNDQ0MCIsInVzZXJuYW1lIjoi5Lit5Zu954Wk56eR5oC76YOo566h55CG5ZGYIn0.Qom_kDtUDfbbt2O-j0hOCnNz-G0SoHgVjaiKGXi5rRc";
+          "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJjcmVhdGVUaW1lIjoxNjY5NjE3ODc3LCJyb2xlcyI6IumHh-e8luWqkui1hOa1i-ivleinkuiJsizkuK3lm73nhaTnp5HmgLvpg6jnrqHnkIblkZgiLCJ1c2VySWQiOiI4NjAwMDBfMDAxMzE2XzAwNDQ0MCIsInVzZXJuYW1lIjoi5Lit5Zu954Wk56eR5oC76YOo566h55CG5ZGYIn0.QOEieovI9j-7uTYxPlHpL7iTDJUjTmY-rQLvD3oChVA";
         return config;
       },
       function (error) {
@@ -105,7 +105,7 @@ export class OkHttpHolder {
     let thiz_ = this;
     // 返回重试请求
     return backoff.then(function () {
-      return thiz_.service(config);
+      return thiz_.#service(config);
     });
   }
 }

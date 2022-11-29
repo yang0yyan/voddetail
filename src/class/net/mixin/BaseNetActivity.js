@@ -11,6 +11,7 @@ export default {
       loadingCount: 0,
       messageShowTime: 0,
 
+      showDialog: false,
       showSelfDialog: false,
     };
   },
@@ -37,6 +38,7 @@ export default {
   },
   methods: {
     showLoading() {
+      if (!this.showDialog) return;
       if (this.showSelfDialog) {
         this.loading.showLoading();
       } else {
@@ -44,6 +46,7 @@ export default {
       }
     },
     hideLoading() {
+      if (!this.showDialog) return;
       if (this.showSelfDialog) {
         this.loading.hideLoading();
       } else {
@@ -68,8 +71,9 @@ export default {
     },
     onProgress() {},
 
-    setSelfDialog(show) {
-      this.showSelfDialog = show;
+    setDialogOption(show = false, showSelf = false) {
+      this.showDialog = show;
+      this.showSelfDialog = showSelf;
     },
   },
 };

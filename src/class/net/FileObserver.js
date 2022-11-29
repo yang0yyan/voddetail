@@ -7,7 +7,7 @@ export class FileObserver extends BaseObserver {
 
   // @Override 重写父类方法
   onStart() {
-    super.onStart(); //执行父类方法
+    // super.onStart(); //执行父类方法
     if (this.baseView !== undefined) {
       this.baseView.showProgress();
     }
@@ -15,7 +15,7 @@ export class FileObserver extends BaseObserver {
 
   // @Override 重写父类方法
   onComplete() {
-    super.onComplete();
+    // super.onComplete();
     if (this.baseView !== undefined) {
       this.baseView.hideProgress();
     }

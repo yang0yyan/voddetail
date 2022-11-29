@@ -7,7 +7,6 @@
         myPrimaryButtom: !disabled && type === 'primary',
         myIconButtom: !disabled && type === 'icon',
         myWarningButtom: !disabled && type === 'warning',
-        myIgoreButtom: !disabled && type === 'igore',
         myDisabledButtom: disabled,
         myNormalButtom: !disabled,
       }"

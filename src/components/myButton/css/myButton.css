@@ -1,14 +1,10 @@
-#myButton {
-  flex-shrink: 0;
-}
 #myButton .myButton {
-  height: 40px;
+  height: 32px;
   border-radius: 4px;
   box-sizing: border-box;
   font-size: 14px;
   font-family: Microsoft YaHei;
   font-weight: 400;
-  text-align: center;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -19,11 +15,11 @@
 }
 #myButton .myNormalButtom {
   background: #ffffff;
-  border: 1px solid #169bd5;
+  border: 1px solid #1890ff;
   color: #1890ff;
 }
 #myButton .myPrimaryButtom {
-  background: #169bd5;
+  background: #1890ff;
   color: #ffffff;
 }
 #myButton .myIconButtom {
@@ -31,11 +27,6 @@
   color: #1890ff;
 }
 #myButton .myWarningButtom {
-  border: 1px solid #fe5e7c;
-  color: #d3082d;
-}
-#myButton .myIgoreButtom {
-  background: #fce1de;
   border: 1px solid #fe5e7c;
   color: #d3082d;
 }
@@ -50,8 +41,8 @@
   color: #ffffff !important;
 }
 #myButton .myNormalButtom:hover {
-  background: #169bd577;
-  border: 1px solid #169bd5;
+  background: #1890ff77;
+  border: 1px solid #1890ff;
   border-radius: 4px;
   font-size: 14px;
   font-family: Microsoft YaHei;

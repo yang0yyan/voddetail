@@ -4,8 +4,8 @@ export class BaseObserver {
   /**
    * 重载
    * @param {BaseView} baseView
-   * @param {*} success
-   * @param {*} error
+   * @param {Function} success
+   * @param {Function} error
    */
   constructor(baseView, success, error) {
     this.baseView = baseView;
@@ -49,12 +49,13 @@ export class BaseObserver {
 
   // @Override
   onError(e) {
-    console.log(e);
-    this.error(e);
+    // console.log(e);
     if (e.response && e.response.data) {
       this.#responseError(e.response.data.code, e.response.data.message);
+      this.error(e.response.data);
     } else {
       this.#systemError(e.code, e.message);
+      this.error(e);
     }
   }
 
@@ -97,7 +98,7 @@ export class BaseObserver {
         this.#showError(code, "拒绝请求: " + message);
         break;
       case this.SERVICE_ERROR_CODE:
-        this.#showError(code, "服务器遇到错误，无法完成请求");
+        this.#showError(code, "服务器遇到错误，无法完成请求:" + message);
         break;
       case this.SYSTEM_ERROR_CODE:
         this.#showError(code, "系统错误: " + message);
