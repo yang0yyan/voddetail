@@ -43,9 +43,6 @@ export class OkHttpHolder {
     this.#service.interceptors.request.use(
       function (config) {
         // 在发送请求之前做些什么
-        config.headers["Business-Name"] = "CCTEG";
-        config.headers["Authorization"] =
-          "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJjcmVhdGVUaW1lIjoxNjY5NjE3ODc3LCJyb2xlcyI6IumHh-e8luWqkui1hOa1i-ivleinkuiJsizkuK3lm73nhaTnp5HmgLvpg6jnrqHnkIblkZgiLCJ1c2VySWQiOiI4NjAwMDBfMDAxMzE2XzAwNDQ0MCIsInVzZXJuYW1lIjoi5Lit5Zu954Wk56eR5oC76YOo566h55CG5ZGYIn0.QOEieovI9j-7uTYxPlHpL7iTDJUjTmY-rQLvD3oChVA";
         return config;
       },
       function (error) {
