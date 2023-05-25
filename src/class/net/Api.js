@@ -1,6 +1,6 @@
 export class Api {
   constructor() {
-    this.httpsUrlCetc = "/service-Ccteg";
+    this.httpsUrlCetc = "/service-myapp";
   }
 
   /**
